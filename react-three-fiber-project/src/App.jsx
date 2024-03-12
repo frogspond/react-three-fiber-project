@@ -1,25 +1,21 @@
-import { useState } from 'react';
-import frog from './assets/frog.png';
-import './App.css';
-
-function App() {
-  const [count, setCount] = useState(0);
-
+import React from 'react';
+import './index.css';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import More from './pages/More';
+import Home from './pages/Home';
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://github.com/frogspond?tab=repositories" target="_blank">
-          <img src={frog} className="logo" alt="Frog" />
-        </a>
-      </div>
-      <h1>Hola, putaracha</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          Swear count for today is {count}
-        </button>
-      </div>
-    </>
+    <main className="bg-slate-800">
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/more" element={<More />} />
+        </Routes>
+      </Router>
+    </main>
   );
-}
+};
 
 export default App;
